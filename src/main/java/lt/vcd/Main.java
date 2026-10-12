@@ -1,17 +1,43 @@
 package lt.vcd;
 
+import java.util.Scanner;
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     static void main() {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        IO.println(String.format("Hello and welcome!"));
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            IO.println("i = " + i);
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Iveskite valandas: ");
+        int h = scanner.nextInt();
+        System.out.print("Iveskite minutes: ");
+        int m = scanner.nextInt();
+        System.out.print("Iveskite sekundes: ");
+        int s = scanner.nextInt();
+
+
+        if (h < 0 || h > 23 || m < 0 || m > 59 || s < 0 || s > 59){
+            System.out.print("Neteisingai įvestas laikas");
+        } else {
+            s++;
+            if (s == 60) {
+                s = 0;
+                m++;
+                if (m == 60){
+                    m = 0;
+                    h++;
+                    if (h == 24){
+                        h = 0;
+                        m = 0;
+                        s = 0;
+                    }
+                }
+            }
+            System.out.print("laikas po 1 sekundės: " +h+  " " +m+ " " + s);
+
         }
+
+
+
     }
+
 }
